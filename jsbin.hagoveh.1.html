@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>tab切换键</title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<style id="jsbin-css">
+ol{
+  list-style:none;
+}
+.active{
+  background:red;
+}
+</style>
+</head>
+<body>
+  <div id="app">
+    
+  </div>
+<script id="jsbin-javascript">
+let view = new Vue({
+  el:'#app',
+  data:{
+     selected:0,
+     tabs:[
+       {name:'a',content:'aaa'},
+       {name:'b',content:'bbb'},
+       {name:'c',content:'ccc'}
+     ]
+  },
+  template:`
+      <div>
+          <ol>
+            <li v-for="tab in tabs"
+                v-on:click="selected = tab.name"
+                v-bind:class="{active:tab.name === selected}"
+            >{{tab.name}}</li>
+          </ol>
+           <ol>
+             <li v-for="tab in tabs"
+                v-show="selected === tab.name"
+             >{{tab.content}}</li>
+          </ol>
+      </div>
+  `,
+  methods:{
+      
+  }
+  
+})
+</script>
+</body>
+</html>
